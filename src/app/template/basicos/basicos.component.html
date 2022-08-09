@@ -15,8 +15,12 @@
             name="producto"
             autocomplete="off"
             required
+            minlength="3"
           >
-          <span class="form-text text-danger">Deben ser solo 9 letras</span>          
+          <span class="form-text text-danger"
+            *ngIf="nameValid()">
+            Deben ser solo 9 letras
+          </span>
         </div>
       </div>
 
@@ -30,7 +34,11 @@
             ngModel
             name="precio" 
             required           
-          >            
+          >        
+          <span class="form-text text-danger"
+            *ngIf="precioValid()">
+            El precio debe ser mayor a 0
+          </span>    
         </div>
       </div>
 
@@ -51,7 +59,9 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">
+          <button type="submit" 
+            [disabled]="myForm.invalid"
+            class="btn btn-primary float-end">
               Enviar
           </button>
 

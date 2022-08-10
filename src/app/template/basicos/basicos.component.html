@@ -51,7 +51,9 @@
             placeholder="Existenca del producto"
             ngModel
             name="existencia"
-            required
+            customMin
+            [minimo]="0"
+            required                        
           >            
         </div>
       </div>
@@ -79,5 +81,14 @@
 
     <span>Value</span>
     <pre>{{ myForm.value | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched }}</pre>
+
+    <span>CutomDirective</span>
+    <!-- <pre>{{ myForm?.controls?.['existencias']?.errors | json }}</pre> -->
   </div>
 </div>

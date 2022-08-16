@@ -14,6 +14,12 @@ export class BasicosComponent implements OnInit {
   ngOnInit() {
   }
 
+  initForm = {
+    producto: 'Macbook',
+    precio: 10,
+    existencia: 20
+  }
+
 
   nameValid(): boolean {
     return this.myForm?.controls['producto']?.invalid &&
@@ -25,7 +31,13 @@ export class BasicosComponent implements OnInit {
   }
 
   save(myForm: NgForm){
-    console.log(myForm.value );
+    //console.log(myForm.value );
+    console.log('Posteo exitoso');
+    
+    this.myForm.resetForm({
+      precio: 0,
+      existencia: 0
+    })
     
   }
 

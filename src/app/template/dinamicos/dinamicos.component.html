@@ -1,3 +1,56 @@
-<p>
-  dinamicos works!
-</p>
+<h2>Template: <small>Dinamicos</small></h2>
+
+<hr>
+
+<form (ngSubmit)="guardar(myForm)" #myForm="ngForm">
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input type="text" 
+            class="form-control"
+            placeholder="Nombre de la persona"
+            autocomplete="off"
+            ngModel
+            name="nombre"
+            autocomplete="off"
+            required
+            minlength="3"
+        > 
+        <span class="form-text text-danger" *ngIf="nameValid()">
+          Campo obligatorio
+        </span>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="button"
+              [disabled]="myForm.invalid"
+              class="btn btn-primary float-end"
+              (click)="guardar(myForm)"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ myForm.valid }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched }}</pre>
+
+    <span>CutomDirective</span>
+    <!-- <pre>{{ myForm?.controls?.['existencias']?.errors | json }}</pre> -->
+  </div>
+</div>

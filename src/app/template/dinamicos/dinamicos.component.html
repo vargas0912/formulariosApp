@@ -3,6 +3,8 @@
 <hr>
 
 <form (ngSubmit)="guardar(myForm)" #myForm="ngForm">
+  
+  <!-- Nombre -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Nombre</label>
     <div class="col-sm-9">
@@ -10,7 +12,7 @@
             class="form-control"
             placeholder="Nombre de la persona"
             autocomplete="off"
-            ngModel
+            [ngModel]="persona.nombre"
             name="nombre"
             autocomplete="off"
             required
@@ -20,6 +22,41 @@
           Campo obligatorio
         </span>
 
+    </div>
+  </div>
+
+  <!-- Agregar favorito-->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input type="text" 
+              class="form-control">
+        <button class="btn btn-outline-primary">
+            Add
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lista de juegos favoritos -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+      <div class="input-group mb-1"
+            *ngFor="let juego of persona.favoritos; let i = index">
+        <input 
+                [(ngModel)]="juego.nombre"
+                name="fav_{{ i }}"
+                required=""
+                class="form-control">
+        <button class="btn btn-outline-danger"
+                type="button"
+                (click)="eliminar(i)">
+          x
+        </button>                
+      </div>
     </div>
   </div>
 
@@ -38,8 +75,8 @@
 
 <div class="row">
   <div class="col">
-    <span>Valid</span>
-    <pre>{{ myForm.valid }}</pre>
+    <span>Persona</span>
+    <pre>{{ persona | json }}</pre>
 
     <span>Value</span>
     <pre>{{ myForm.value | json }}</pre>
@@ -49,8 +86,5 @@
 
     <span>Touched</span>
     <pre>{{ myForm.touched }}</pre>
-
-    <span>CutomDirective</span>
-    <!-- <pre>{{ myForm?.controls?.['existencias']?.errors | json }}</pre> -->
   </div>
 </div>

@@ -27,12 +27,18 @@
 
   <!-- Agregar favorito-->
   <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Agregar</label>
+    <label class="col-sm-3 col-form-label">Agregar </label>
     <div class="col-sm-9">
       <div class="input-group">
         <input type="text" 
-              class="form-control">
-        <button class="btn btn-outline-primary">
+               placeholder="Agregar favorito"
+               [(ngModel)]="newGame"
+               (keyup.enter)="addGame()"
+               name="newGame"
+               class="form-control">
+        <button class="btn btn-outline-primary"
+                type="button"
+                (click)="addGame()">
             Add
         </button>
       </div>

@@ -18,6 +18,8 @@ interface Favorito {
 export class DinamicosComponent  {
   @ViewChild('myForm') myForm!: NgForm;
 
+  newGame: string = '';
+
   persona: Persona = {
     nombre: 'Gerardo',
     favoritos: [
@@ -39,6 +41,17 @@ export class DinamicosComponent  {
 
   eliminar(index: number){
     this.persona.favoritos.splice(index, 1);
+  }
+
+  addGame() {
+    const newFav: Favorito = {
+      id: this.persona.favoritos.length + 1,
+      nombre: this.newGame
+    }
+
+    this.persona.favoritos.push({...newFav});
+
+    this.newGame = '';
   }
 
 }

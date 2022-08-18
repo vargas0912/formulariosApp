@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ReactiveRoutingModule } from './reactive-routing.module';
 
@@ -10,12 +11,13 @@ import { SwitchesComponent } from './switches/switches.component';
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveRoutingModule
+    ReactiveRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     BasicosComponent,
     DinamicosComponent,
-    SwitchesComponent
+    SwitchesComponent    
   ]
 })
 export class ReactiveModule { }

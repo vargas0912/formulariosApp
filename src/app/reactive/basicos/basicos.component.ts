@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basicos',
@@ -17,8 +17,8 @@ export class BasicosComponent  {
   constructor(private formBuilder: FormBuilder ) { }
 
   myForm: FormGroup = this.formBuilder.group({
-    nombre:       ['Macbook pro'],
-    precio:       [10],
-    existencias:  [1],
+    nombre:       ['Macbook pro', [Validators.required, Validators.minLength(5)]],
+    precio:       [10, [Validators.required, Validators.min(0)] ],
+    existencias:  [1, [Validators.required, Validators.min(0)]],
   })
 }

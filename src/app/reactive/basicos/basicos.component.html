@@ -13,8 +13,9 @@
             formControlName="nombre"
             placeholder="Producto"            
           >
-          <span class="form-text text-danger">
-            Deben ser solo 9 letras
+          <span  *ngIf="nameValid('nombre')"
+          class="form-text text-danger">
+            Deben ser solo 5 letras
           </span>
         </div>
       </div>
@@ -27,7 +28,8 @@
             class="form-control"
             formControlName="precio"
             placeholder="Precio del producto">
-          <span class="form-text text-danger">
+          <span *ngIf="nameValid('precio')"
+            class="form-text text-danger">
             El precio debe ser mayor a 0
           </span>    
         </div>
@@ -41,7 +43,11 @@
             class="form-control"
             formControlName="existencias"
             placeholder="Existenca del producto"                                
-          >            
+          >
+          <span *ngIf="nameValid('existencias')"
+          class="form-text text-danger">
+          Las existencias deben ser mayor a 0
+        </span>        
         </div>
       </div>
      
@@ -74,5 +80,6 @@
 
     <span>Touched</span>
     <pre>{{ myForm.touched }}</pre>
+        
   </div>
 </div>

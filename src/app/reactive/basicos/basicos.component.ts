@@ -14,11 +14,18 @@ export class BasicosComponent  {
   // })
 
 
+  myForm: FormGroup = this.formBuilder.group({
+    nombre:       [, [Validators.required, Validators.minLength(5)]],
+    precio:       [, [Validators.required, Validators.min(0)] ],
+    existencias:  [, [Validators.required, Validators.min(0)]],
+  })
+
   constructor(private formBuilder: FormBuilder ) { }
 
-  myForm: FormGroup = this.formBuilder.group({
-    nombre:       ['Macbook pro', [Validators.required, Validators.minLength(5)]],
-    precio:       [10, [Validators.required, Validators.min(0)] ],
-    existencias:  [1, [Validators.required, Validators.min(0)]],
-  })
+  nameValid(campo: string) {
+    return this.myForm.controls?.[campo]?.errors 
+      && this.myForm.controls[campo]?.touched;
+  }
+
+
 }
